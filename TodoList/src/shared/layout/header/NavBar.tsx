@@ -7,8 +7,8 @@ export const NavBar = () => {
       <Header>
         <Logo>MyApp</Logo>
         <Nav>
-          <StyledNavLink to="/">Home</StyledNavLink>
-          <StyledNavLink to="/todo">Todo</StyledNavLink>
+          {/* <StyledNavLink to="/">Home</StyledNavLink> */}
+          <StyledNavLink to="/">Todo</StyledNavLink>
         </Nav>
       </Header>
     </Container>

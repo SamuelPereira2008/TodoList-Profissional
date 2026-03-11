@@ -9,7 +9,7 @@ export const PageLayout = ({ children, title }: IPageLayout) => {
   return (
     <Container>
       <NavBar />
-      <h1>Title: {title}</h1>
+      <title>{title}</title>
       <div>{children}</div>
     </Container>
   );
