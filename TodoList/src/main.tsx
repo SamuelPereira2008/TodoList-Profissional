@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import { GlobalStyle } from "./styles/GlobalStyle";
 
-// import "./mocks/server";
+import "./mocks/server";
 import { App } from "./App";
 
 createRoot(document.getElementById("root")!).render(

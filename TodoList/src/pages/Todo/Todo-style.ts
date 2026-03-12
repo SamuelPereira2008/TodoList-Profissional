@@ -23,4 +23,29 @@ export const TodoForm = styled.div`
   border-radius: ${theme.radius.md};
   box-sizing: border-box;
   margin-bottom: 1rem;
+
+  @media (max-width: 1200px) {
+    width: 60%;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+
+  @media (max-width: 480px) {
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+`;
+
+export const TodoList = styled.ol`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 `;

@@ -1,32 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputAdd } from "../../components/Todo/InputAdd";
 import { PageLayout } from "../../shared/layout/pageLayout/PageLayout";
-import { Container, TodoForm } from "./Todo-style";
+import { Container, TodoForm, TodoList } from "./Todo-style";
 import { TodoItem } from "../../components/Todo/TodoItem";
+import { TodoAPI, type ITodo } from "../../shared/services/TodoAPI";
 
 function Todo() {
-  const [list, setList] = useState([
-    { id: "1", text: "Learn React", complete: false },
-    { id: "2", text: "Build a Todo App", complete: false },
-  ]);
+  const [list, setList] = useState<ITodo[]>([]);
 
-  const HandleAdd = (value: string) => {
-    setList([
-      ...list,
-      { id: Date.now().toString(), text: value, complete: false },
-    ]);
+  useEffect(() => {
+    (async () => {
+      try {
+        const todos = await TodoAPI.getAll();
+        setList(todos);
+      } catch (error) {
+        console.error("Erro ao carregar todos:", error);
+      }
+    })();
+  }, []);
+
+  const HandleAdd = async (value: string) => {
+    try {
+      const newTodo = await TodoAPI.create({
+        label: value,
+        complete: false,
+      });
+      setList([...list, newTodo]);
+    } catch (error) {
+      console.error("Erro ao adicionar todo:", error);
+    }
   };
 
-  const HandleComplete = (id: string) => {
-    setList(
-      list.map((todo) =>
-        todo.id === id ? { ...todo, complete: !todo.complete } : todo,
-      ),
-    );
+  const HandleComplete = async (id: string) => {
+    try {
+      await TodoAPI.updateById(id, {
+        complete: !list.find((todo) => todo.id === id)?.complete,
+      });
+      setList(
+        list.map((todo) =>
+          todo.id === id ? { ...todo, complete: !todo.complete } : todo,
+        ),
+      );
+    } catch (error) {
+      console.error("Erro ao atualizar todo:", error);
+    }
   };
 
-  const HandleDelete = (id: string) => {
-    setList(list.filter((todo) => todo.id !== id));
+  const HandleDelete = async (id: string) => {
+    try {
+      await TodoAPI.deleteById(id);
+      setList(list.filter((todo) => todo.id !== id));
+    } catch (error) {
+      console.error("Erro ao excluir todo:", error);
+    }
   };
 
   return (
@@ -35,18 +61,22 @@ function Todo() {
         <TodoForm>
           <InputAdd onAdd={HandleAdd} />
 
-          <ol>
-            {list.map((item) => (
-              <TodoItem
-                key={item.id}
-                id={item.id}
-                text={item.text}
-                complete={item.complete}
-                onComplete={(id) => HandleComplete(id)}
-                onDelete={(id) => HandleDelete(id)}
-              />
-            ))}
-          </ol>
+          <TodoList>
+            {list && list.length > 0 ? (
+              list.map((item) => (
+                <TodoItem
+                  key={item.id}
+                  id={item.id}
+                  text={item.label}
+                  complete={item.complete}
+                  onComplete={(id) => HandleComplete(id)}
+                  onDelete={(id) => HandleDelete(id)}
+                />
+              ))
+            ) : (
+              <p>Nenhuma tarefa adicionada</p>
+            )}
+          </TodoList>
         </TodoForm>
       </Container>
     </PageLayout>
