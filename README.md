@@ -1,6 +1,6 @@
 # 🚀 TodoList em React (Projeto de Estudo)
 
-![Preview do Projeto]('./')
+![Preview do Projeto](./My%20TodoList%20react.png)
 
 Este projeto é uma **aplicação simples de gerenciamento de tarefas (Todo List)** desenvolvida utilizando **React**.
 
