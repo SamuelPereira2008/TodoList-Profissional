@@ -28,13 +28,20 @@ export const TodoForm = styled.div`
     width: 60%;
   }
 
+  @media (max-width: 1024px) {
+    width: 75%;
+  }
+
   @media (max-width: 768px) {
     width: 80%;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px ) {
     width: 90%;
-    flex-wrap: wrap;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
     gap: 0.5rem;
   }
 `;

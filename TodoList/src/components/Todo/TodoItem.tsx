@@ -1,4 +1,4 @@
-import { ButtonSmall, TodoItemList, Text, Bold } from "./Todo_style";
+import { ButtonSmall, TodoItemList, Text, Bold, Buttons } from "./Todo_style";
 
 interface ITodoItemProps {
   id: string;
@@ -20,8 +20,10 @@ function TodoItem({
       <Bold $complete={complete}>
         {complete ? " (completed)" : " (pending)"}
       </Bold>
-      <ButtonSmall onClick={() => onComplete(id)}>Toggle</ButtonSmall>
-      <ButtonSmall onClick={() => onDelete(id)}>Delete</ButtonSmall>
+      <Buttons>
+        <ButtonSmall onClick={() => onComplete(id)}>Toggle</ButtonSmall>
+        <ButtonSmall onClick={() => onDelete(id)}>Delete</ButtonSmall>
+      </Buttons>
     </TodoItemList>
   );
 }

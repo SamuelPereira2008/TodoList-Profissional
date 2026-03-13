@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# TodoList Profissional (Estudo)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é um **exercício de estudo** sobre **React + TypeScript**, com foco em:
 
-Currently, two official plugins are available:
+- Uso de **mocks** via **MirageJS** para simular API (sem precisar de backend real);
+- Requisições HTTP com **Axios**;
+- Estilização com **styled-components**;
+- Criação de componentes e páginas no estilo de uma aplicação de tarefas (todo list);
+- Estrutura de projeto criada com **Vite** para desenvolvimento moderno.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 O que o projeto contém
 
-## React Compiler
+- Uma interface para listar, adicionar e marcar tarefas como concluídas;
+- Componentes em React + TypeScript (`src/components`, `src/pages`);
+- Mock de API (MirageJS) em `src/mocks/server.ts`;
+- Consumo de dados usando **Axios** em `src/shared/services/TodoAPI.ts`;
+- Estilização modular com **styled-components** (`src/styles/*`, `src/components/*/style.ts`);
+- Layout de página e cabeçalho com componentes reutilizáveis.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Como rodar localmente
 
-## Expanding the ESLint configuration
+### 1) Instalar dependências
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2) Iniciar o servidor de desenvolvimento
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Depois de rodar, abra o endereço que aparecer no terminal (normalmente `http://localhost:5173`).
+
+## 🚀 Por que este projeto foi feito
+
+Este repositório foi criado para praticar e aprender:
+
+- Arquitetura de componentes React com TypeScript;
+- Teste de APIs via mocks (MirageJS) sem precisar de backend;
+- Consumo de APIs com Axios;
+- Estilização com styled-components;
+- Criação de um fluxo simples de CRUD (criar/ler/alterar) de tarefas.
+
+---
+
+> 💡 Dica: se quiser alterar o mock ou verificar como os dados são gerados, olhe em `src/mocks/server.ts`.
