@@ -69,7 +69,7 @@ Esse é **o primeiro de muitos projetos que estou desenvolvendo para evoluir com
 
 Se você quiser ver uma **explicação mais técnica sobre a arquitetura do projeto**, estrutura de pastas e funcionamento do mock da API, acesse o README técnico abaixo:
 
-👉 **[Ver documentação técnica do projeto](./README_TECHNICAL.md)**
+👉 **[Ver documentação técnica do projeto](https://github.com/SamuelPereira2008/TodoList-Profissional/blob/ae88cb78d5ee5e28c2e6371ede1bcc45fec14184/TodoList/README.md)**
 
 ---
 
